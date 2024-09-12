@@ -8,8 +8,7 @@ function App(): React.JSX.Element {
                 UM COS420 with React Hooks and TypeScript
             </header>
             <p>
-                Edit <code>src/App.tsx</code> and save. This page will
-                automatically reload.
+                Edit <code>src/App.tsx</code> and save. Hello World! - Saurav
             </p>
         </div>
     );

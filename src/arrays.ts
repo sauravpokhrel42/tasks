@@ -72,7 +72,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  */
 export function countShortWords(words: string[]): number {
     const fourWordsArray = words.filter(
-        (word: string): boolean => word.length <= 4,
+        (word: string): boolean => word.length < 4,
     );
     return fourWordsArray.length;
 }
@@ -122,6 +122,9 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
+    if (values.length === 1) {
+        return values;
+    }
     const totalSum = values.reduce(
         (accumulator, value) => accumulator + (value >= 0 ? value : 0),
         0,

@@ -83,7 +83,15 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const test = colors.every(
+        (color: string): boolean =>
+            color === "red" || color === "green" || color === "blue",
+    );
+    if (test || colors.length === 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 /**
@@ -114,5 +122,19 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const totalSum = values.reduce(
+        (accumulator, value) => accumulator + (value >= 0 ? value : 0),
+        0,
+    );
+    const indexOfFirstNegative = values.findIndex((num) => num < 0);
+
+    if (indexOfFirstNegative === -1) {
+        return [...values, totalSum];
+    } else {
+        return [
+            ...values.slice(0, indexOfFirstNegative + 1),
+            totalSum,
+            ...values.slice(indexOfFirstNegative + 1),
+        ];
+    }
 }

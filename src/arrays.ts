@@ -123,21 +123,22 @@ export function makeMath(addends: number[]): string {
  */
 export function injectPositive(values: number[]): number[] {
     if (values.length === 1) {
-        return values;
+        const valueAddedAtEnd = [values[0], values[0]];
+        return valueAddedAtEnd;
     }
-    const totalSum = values.reduce(
-        (accumulator, value) => accumulator + (value >= 0 ? value : 0),
-        0,
-    );
-    const indexOfFirstNegative = values.findIndex((num) => num < 0);
 
-    if (indexOfFirstNegative === -1) {
-        return [...values, totalSum];
+    const firstNegNumIdx = values.findIndex((num) => num < 0);
+    const sumBeforeFirstNegative = values
+        .slice(0, firstNegNumIdx === -1 ? values.length : firstNegNumIdx)
+        .reduce((acc, value) => acc + value, 0);
+
+    if (firstNegNumIdx === -1) {
+        return [...values, sumBeforeFirstNegative];
     } else {
         return [
-            ...values.slice(0, indexOfFirstNegative + 1),
-            totalSum,
-            ...values.slice(indexOfFirstNegative + 1),
+            ...values.slice(0, firstNegNumIdx + 1),
+            sumBeforeFirstNegative,
+            ...values.slice(firstNegNumIdx + 1),
         ];
     }
 }

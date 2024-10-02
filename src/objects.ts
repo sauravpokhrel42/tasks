@@ -42,7 +42,14 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    return false;
+    switch (question.type) {
+        case "short_answer_question":
+            return true;
+        case "multiple_choice_question":
+            return question.options.includes(answer);
+        default:
+            return false;
+    }
 }
 
 /**
@@ -52,7 +59,13 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    return (
+        question.id +
+        ": " +
+        (question.name.length <= 10 ?
+            question.name
+        :   question.name.slice(0, 10))
+    );
 }
 
 /**

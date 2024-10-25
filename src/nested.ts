@@ -42,7 +42,10 @@ export function findQuestion(
  * Hint: use filter
  */
 export function removeQuestion(questions: Question[], id: number): Question[] {
-    return [];
+    const arrayWithoutId = questions.filter(
+        (q: Question): boolean => q.id != id,
+    );
+    return arrayWithoutId;
 }
 
 /***
@@ -51,7 +54,8 @@ export function removeQuestion(questions: Question[], id: number): Question[] {
  * Do not modify the input array.
  */
 export function getNames(questions: Question[]): string[] {
-    return [];
+    const arrayWithNames = questions.map((q: Question): string => q.name);
+    return arrayWithNames;
 }
 
 /**

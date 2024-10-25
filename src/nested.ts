@@ -1,5 +1,6 @@
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
+import { makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -34,7 +35,7 @@ export function findQuestion(
     id: number,
 ): Question | null {
     const foundQuestion = questions.find((q: Question) => q.id === id);
-    return foundQuestion || return null;
+    return foundQuestion !== undefined ? foundQuestion : null;
 }
 
 /**
@@ -65,7 +66,12 @@ export function getNames(questions: Question[]): string[] {
  * making the `text` an empty string, and using false for both `submitted` and `correct`.
  */
 export function makeAnswers(questions: Question[]): Answer[] {
-    return [];
+    return questions.map((q: Question) => ({
+        questionId: q.id,
+        text: "",
+        submitted: false,
+        correct: false,
+    }));
 }
 
 /***
@@ -92,7 +98,8 @@ export function addNewQuestion(
     name: string,
     type: QuestionType,
 ): Question[] {
-    return [];
+    const newQuestion = makeBlankQuestion(id, name, type);
+    return [...questions, newQuestion];
 }
 
 /***
@@ -107,7 +114,10 @@ export function renameQuestionById(
     targetId: number,
     newName: string,
 ): Question[] {
-    const newArray = questions.map((q: Question): Question => q.id === targetId ? { ...q, name: newName} : q);
+    const newArray = questions.map(
+        (q: Question): Question =>
+            q.id === targetId ? { ...q, name: newName } : q,
+    );
     return newArray;
 }
 
@@ -129,5 +139,28 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    return [];
+    function editOptionsArray(
+        options: string[],
+        index: number,
+        option: string,
+    ): string[] {
+        if (index === -1) {
+            return [...options, option];
+        } else {
+            return options.map((opt, i) => (i === index ? option : opt));
+        }
+    }
+
+    return questions.map((question) =>
+        question.id === targetId ?
+            {
+                ...question,
+                options: editOptionsArray(
+                    question.options,
+                    targetOptionIndex,
+                    newOption,
+                ),
+            }
+        :   question,
+    );
 }

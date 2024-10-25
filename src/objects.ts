@@ -87,7 +87,7 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
     return (
-        "#" +
+        "# " +
         question.name +
         "\n" +
         question.body +

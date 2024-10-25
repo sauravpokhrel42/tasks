@@ -19,11 +19,12 @@ export function getPublishedQuestions(questions: Question[]): Question[] {
  * `expected`, and an empty array for its `options`.
  */
 export function getNonEmptyQuestions(questions: Question[]): Question[] {
-    const nonEmptyQuestions = questions.filter(
+    return questions.filter(
         (q: Question): boolean =>
-            q.body.length < 1 && q.expected.length < 1 && q.options.length < 1,
+            q.body.trim().length > 0 ||
+            q.expected.trim().length > 0 ||
+            q.options.length > 0,
     );
-    return nonEmptyQuestions;
 }
 
 /***
@@ -150,7 +151,6 @@ export function editOption(
             return options.map((opt, i) => (i === index ? option : opt));
         }
     }
-
     return questions.map((question) =>
         question.id === targetId ?
             {

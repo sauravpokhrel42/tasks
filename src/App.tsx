@@ -14,10 +14,20 @@ function App(): React.JSX.Element {
                 <Container>
                     <Row>
                         <Col>
-                            <div className="RedRectangle"> Left Column</div>
+                            <div
+                                className="RedRectangle"
+                                style={{ backgroundColor: "red" }}
+                            >
+                                Left Column
+                            </div>
                         </Col>
                         <Col>
-                            <div className="RedRectangle">Right Column</div>
+                            <div
+                                className="RedRectangle"
+                                style={{ backgroundColor: "red" }}
+                            >
+                                Right Column
+                            </div>
                         </Col>
                     </Row>
                 </Container>
@@ -32,7 +42,7 @@ function App(): React.JSX.Element {
                 alt="A picture of a gecko"
             />
             <ol>
-                <li> List: </li>
+                <li>List:</li>
                 <li>First thing</li>
                 <li>Another thing</li>
                 <li>A third item</li>
@@ -47,17 +57,14 @@ function App(): React.JSX.Element {
             >
                 log Hello World
             </Button>
-            <header className="App-header">
-                UM COS420 with React Hooks and TypeScript
-            </header>
-            <hr></hr>
-            <Counter></Counter>
             <hr />
-            <RevealAnswer></RevealAnswer>
+            <Counter />
             <hr />
-            <TwoDice></TwoDice>
+            <RevealAnswer />
             <hr />
-            <ChangeType></ChangeType>
+            <TwoDice />
+            <hr />
+            <ChangeType />
         </div>
     );
 }

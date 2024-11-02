@@ -149,7 +149,7 @@ export function editOption(
             } else {
                 newOptions[targetOptionIndex] = newOption;
             }
-            return { ...question, option: newOptions };
+            return { ...question, options: newOptions };
         }
         return question;
     });

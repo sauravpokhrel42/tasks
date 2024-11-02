@@ -140,27 +140,17 @@ export function editOption(
     targetOptionIndex: number,
     newOption: string,
 ): Question[] {
-    function editOptionsArray(
-        options: string[],
-        index: number,
-        option: string,
-    ): string[] {
-        if (index === -1) {
-            return [...options, option];
-        } else {
-            return options.map((opt, i) => (i === index ? option : opt));
-        }
-    }
-    return questions.map((question) =>
-        question.id === targetId ?
-            {
-                ...question,
-                options: editOptionsArray(
-                    question.options,
-                    targetOptionIndex,
-                    newOption,
-                ),
+    return questions.map((question) => {
+        if (question.id === targetId) {
+            let newOptions = [...question.options];
+
+            if (targetOptionIndex === -1) {
+                newOptions.push(newOption);
+            } else {
+                newOptions[targetOptionIndex] = newOption;
             }
-        :   question,
-    );
+            return { ...question, option: newOptions };
+        }
+        return question;
+    });
 }

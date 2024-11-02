@@ -2,6 +2,10 @@ import React from "react";
 import "./App.css";
 import { Button } from "react-bootstrap";
 import { Container, Row, Col } from "react-bootstrap";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { TwoDice } from "./components/TwoDice";
+import { Counter } from "./components/Counter";
 
 function App(): React.JSX.Element {
     return (
@@ -10,10 +14,20 @@ function App(): React.JSX.Element {
                 <Container>
                     <Row>
                         <Col>
-                            <div className="RedRectangle"> Left Column</div>
+                            <div
+                                className="RedRectangle"
+                                style={{ backgroundColor: "red" }}
+                            >
+                                Left Column
+                            </div>
                         </Col>
                         <Col>
-                            <div className="RedRectangle">Right Column</div>
+                            <div
+                                className="RedRectangle"
+                                style={{ backgroundColor: "red" }}
+                            >
+                                Right Column
+                            </div>
                         </Col>
                     </Row>
                 </Container>
@@ -28,7 +42,7 @@ function App(): React.JSX.Element {
                 alt="A picture of a gecko"
             />
             <ol>
-                <li> List: </li>
+                <li>List:</li>
                 <li>First thing</li>
                 <li>Another thing</li>
                 <li>A third item</li>
@@ -43,6 +57,14 @@ function App(): React.JSX.Element {
             >
                 log Hello World
             </Button>
+            <hr />
+            <Counter />
+            <hr />
+            <RevealAnswer />
+            <hr />
+            <TwoDice />
+            <hr />
+            <ChangeType />
         </div>
     );
 }

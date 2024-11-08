@@ -44,15 +44,15 @@ function App(): React.JSX.Element {
                 src="https://a-z-animals.com/media/2018/09/Gecko-on-stump.jpg"
                 alt="A picture of a gecko"
             />
-            <ol>
+            <p>
+                Edit <code>src/App.tsx</code> and save. Hello World! - Saurav
+            </p>
+            <ol role="list">
                 <li>List:</li>
                 <li>First thing</li>
                 <li>Another thing</li>
                 <li>A third item</li>
             </ol>
-            <p>
-                Edit <code>src/App.tsx</code> and save. Hello World! - Saurav
-            </p>
             <Button
                 onClick={() => {
                     console.log("Hello World!");

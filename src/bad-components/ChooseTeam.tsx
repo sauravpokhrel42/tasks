@@ -45,7 +45,7 @@ export function ChooseTeam(): React.JSX.Element {
                 </Col>
                 <Col>
                     <strong>Team:</strong>
-                    <ul>
+                    <ul role="team-list">
                         {team.map((member: string) => (
                             <li key={member}>{member}</li>
                         ))}

@@ -7,8 +7,8 @@ import { RevealAnswer } from "./components/RevealAnswer";
 import { TwoDice } from "./components/TwoDice";
 import { Counter } from "./components/Counter";
 import { DoubleHalf } from "./bad-components/DoubleHalf";
-import { ColoredBox } from "./bad-components/ColoredBox";
-import { ChooseTeam } from "./bad-components/ChooseTeam";
+// import { ColoredBox } from "./bad-components/ColoredBox";
+// import { ChooseTeam } from "./bad-components/ChooseTeam";
 
 function App(): React.JSX.Element {
     return (
@@ -68,6 +68,8 @@ function App(): React.JSX.Element {
             <TwoDice />
             <hr />
             <ChangeType />
+            <hr />
+            <DoubleHalf /> {/* Uncommented DoubleHalf component */}
         </div>
     );
 }

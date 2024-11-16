@@ -9,6 +9,8 @@ import { Counter } from "./components/Counter";
 import { DoubleHalf } from "./bad-components/DoubleHalf";
 import { ChooseTeam } from "./bad-components/ChooseTeam";
 import { ColoredBox } from "./bad-components/ColoredBox";
+import { EditMode } from "./form-components/EditMode";
+import { MultipleChoiceQuestion } from "./form-components/MultipleChoiceQuestion";
 
 function App(): React.JSX.Element {
     return (
@@ -74,6 +76,13 @@ function App(): React.JSX.Element {
             <ChooseTeam />
             <hr />
             <ColoredBox />
+            <hr />
+            <EditMode />
+            <hr />
+            <MultipleChoiceQuestion
+                options={["Option A", "Option B", "Option C", "Option D"]}
+                expectedAnswer="Option C"
+            />
         </div>
     );
 }
